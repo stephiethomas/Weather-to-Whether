@@ -8,34 +8,40 @@
            <link rel="stylesheet" href="./assets/css/stylesheet.css" />
     <title>Weather Dashboard</title>
 </head>
-<body>
-    
 
+<body class="flex-row justify-space-between">
     <header id="header" class="header">
         <h1>Weather Dashboard</h1>
             </div>
         </div>
     </header>
     <br>
-    <div class="card">
+    <div class="card" >
+    <div class="col-12 col-md-4"></div>    
     <div id="search" class="search">
-        <h2>Search for a City</h2>
+        <h2 class="card-header text-uppercase">Search for a City</h2>
         <form action="">
             <input id="search-form" type="text" placeholder="Search for a City">
             <button id="searchBtn" type="button">Search</button>
         </form>
     </div>
-    </div>
-    <br>
     <div class="card">
-    <div id="recentSrch" class="recent-container">
-        <ul class="cities"></ul>
-    </div>
+        <div id="recentSrch" class="recent-container">
+            <h4>Recent Search</h4>
+            <ul class="cities"></ul>
+        </div>
     </div>
     <br>
+    
+    </div>
+    <br>
+    <div class="col-12 col-md-8">
+        <h2 class="subtitle">Showing Forecast Information For: <span id="city-search-info"></span></h2>
+    <div id="city-container" class="city"></div>
+    </div>
     <div id="forecast" class="forecast">
         <div class="card">
-            <h2>5 Day Forecast</h2>
+            <h2 class="card-header text-uppercase">5 Day Forecast</h2>
         </div>
     </div>
     <script src=".//assets/js/script.js"></script>
