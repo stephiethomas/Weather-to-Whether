@@ -1,4 +1,11 @@
-
+:root {
+    --primary: linear-gradient(to right, #0000ff 0%, #000066 90%);
+    --secondary: whitesmoke;
+    --tertiary: aliceblue;
+    --light-dark: #4682b4;
+    --dark: #191970;
+    --border-radius: .3rem;
+}
 * {
     box-sizing: border-box;
 }
@@ -8,12 +15,38 @@ body {
     width: 75%;
     padding: 0;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-
+    line-height: 1.5;
+    font-size: 18px;
 }
-
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  margin: 0;
+  color: var;
+  line-height: 1.25;
+}
 
 header {
     background: linear-gradient(to right, #0000ff 0%, #000066 90%);
     text-align: center;
     color: whitesmoke;
+}
+.button {
+    font-size: 1.3rem;
+    text-decoration:none;
+    padding: 6px 5px;
+    width: 100%;
+    display: block;
+    margin: 5px 0;
+    border-radius: var(--border-radius);
+    color: var(--primary);
+    border: none;
+    outline: none;
+    background-color: var(--light-dark);
+    box-shadow: 3px 3px var(--dark);
+    transform: translate(-1px, -1px);  
 }

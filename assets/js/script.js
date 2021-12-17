@@ -37,6 +37,9 @@ var getForecast = function() {
         res.json()
         .then(function(data) {
             console.log(data);
+            displayCity(data);
+            //append to container
+          
         });
     });
 };
