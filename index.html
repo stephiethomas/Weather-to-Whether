@@ -11,16 +11,33 @@
 <body>
     
 
-    <header>
-        <div class="heading">
-            <div>
-                <h1>Weather Dashboard</h1>
+    <header id="header" class="header">
+        <h1>Weather Dashboard</h1>
             </div>
         </div>
     </header>
-
     <br>
-
+    <div class="card">
+    <div id="search" class="search">
+        <h2>Search for a City</h2>
+        <form action="">
+            <input id="search-form" type="text" placeholder="Search for a City">
+            <button id="searchBtn" type="button">Search</button>
+        </form>
+    </div>
+    </div>
+    <br>
+    <div class="card">
+    <div id="recentSrch" class="recent-container">
+        <ul class="cities"></ul>
+    </div>
+    </div>
+    <br>
+    <div id="forecast" class="forecast">
+        <div class="card">
+            <h2>5 Day Forecast</h2>
+        </div>
+    </div>
     <script src=".//assets/js/script.js"></script>
 
 </body>
