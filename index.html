@@ -9,25 +9,26 @@
     <title>Weather Dashboard</title>
 </head>
 
-<body class="flex-row justify-space-between">
+<body class="flex-column min-100-vh">
     <header id="header" class="header">
         <h1>Weather Dashboard</h1>
             </div>
         </div>
     </header>
     <br>
-    <div class="card" >
+    
+    <div class="card" class=
     <div class="col-12 col-md-4"></div>    
     <div id="search" class="search">
         <h2 class="card-header text-uppercase">Search for a City</h2>
         <form action="">
             <input id="search-form" type="text" placeholder="Search for a City">
-            <button id="searchBtn" type="button">Search</button>
+            <button id="searchBtn" class="searchBtn" type="button">Search</button>
         </form>
     </div>
     <div class="card">
         <div id="recentSrch" class="recent-container">
-            <h4>Recent Search</h4>
+            <h4 class="text-uppercase card-body">Recent Search</h4>
             <ul class="cities"></ul>
         </div>
     </div>
@@ -44,6 +45,7 @@
             <h2 class="card-header text-uppercase">5 Day Forecast</h2>
         </div>
     </div>
+   
     <script src=".//assets/js/script.js"></script>
 
 </body>
