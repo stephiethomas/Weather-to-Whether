@@ -1,0 +1,35 @@
+:root {
+    --primary: aliceblue;
+    --secondary: ;
+    --tertiary: ;
+    --border-radius: .3rem;
+    --light-dark: #3
+}
+* {
+    box-sizing: border-box;
+}
+
+body {
+    
+    margin: 0;
+    padding: 0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    
+
+}
+
+
+
+main {
+    margin: 20px auto;
+    width: 94%;
+}
+
+.hero {
+    background: linear-gradient(to right, #0000ff 0%, #000066 90%);
+   
+    text-align: center;
+}
+todaysForecast .h2 {
+    
+}
