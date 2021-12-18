@@ -73,12 +73,12 @@ var getForecast = function(lat, lon) {
                 //5 Day Forecast
 
                 for (let i = 0; i < 5; i++) {
-                    var dailyDate = new Date(data.daily[i].dt * 1000);
+                    var dailyDate = new Date(data.daily[i].dt * 1000).toLocaleDateString
                     var dailyImg = data.daily[i].weather[0].icon;
                     var dailyTemp = data.daily[i].temp.day;
                     var dailyHumidity = data.daily[i].humidity;
                     var dailyWind  = data.daily[i].wind_speed;
-                    var dailyUVI = data.daily[i].uvi;
+                    // var dailyUVI = data.daily[i].uvi;
                     console.log(i);
 
                     var dailyContainer = document.createElement("div");
@@ -101,12 +101,14 @@ var getForecast = function(lat, lon) {
                     dailyContainer.append(tempDaily);
                     dailyContainer.append(windDaily);
                     dailyContainer.append(humidityDaily);
+                    forecastEl.append(dailyContainer);
+                    console.log(dailyContainer);
                }
 
 
             })
-            getForecast.innerHTML = "";
-            forecastEl.innerHTML = "";
+            // getForecast.innerHTML = "";
+            // forecastEl.innerHTML = "";
         } else{
             alert("Error" + response.statusText)
         }
