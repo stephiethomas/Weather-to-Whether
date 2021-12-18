@@ -5,17 +5,8 @@ var recentSearch = document.querySelector(".cities");
 var forecastEl = document.querySelector("#forecast");
 var cityContainerEl = document.querySelector("#city-container");
 
-
-
-// console.log(currentDay) 
-
 //api key
 var apiKey = "a6f4e97706bc320bc77d0f64e4111a15"
-//Current weather api- need to change
-// data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=minutely,hourly,alerts&units=imperial&appid=" + apiKey;
-    
-
-
 
 //prevent page from refreshing
 var formSubmitHandler = function(event) {
@@ -34,7 +25,7 @@ if (city) {
 };
 
 
-//get forecast from api- put api inside this function
+//get forecast from api and declare variables, create dynamic elements and then append to browser page 
 var getForecast = function(lat, lon) {
     //input city, lat & lon parameters
     var apiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=minutely,hourly,alerts&units=imperial&appid=" + apiKey;
@@ -54,22 +45,19 @@ var getForecast = function(lat, lon) {
                 // console.log(currentUVI)
                 
                 
+                //current date elements
                 var dateEl = document.createElement("h3");
-                dateEl.innerHTML = 'Date: '  + currentDate;
-                                
                 var iconEl = document.createElement("img")
-                iconEl.setAttribute("src","http://openweathermap.org/img/wn/" + currentIcon + ".png");
-                
                 var tempEl = document.createElement("h4");
-                tempEl.innerHTML = "Temp: "  + currentTemp + "\u00B0F";
-                
                 var humidityEl = document.createElement("h4")
-                humidityEl.innerHTML = "Humidity: "  + currentHumidity;
-
-                var windEl = document.createElement("h4")
-                windEl.innerHTML = "Wind: "  + currentWind;
-                
+                var windEl = document.createElement("h4")                
                 var uviEl = document.createElement("h4")
+                     
+                dateEl.innerHTML = 'Date: '  + currentDate;
+                iconEl.setAttribute("src","http://openweathermap.org/img/wn/" + currentIcon + ".png");
+                tempEl.innerHTML = "Temp: "  + currentTemp + "\u00B0F";
+                humidityEl.innerHTML = "Humidity: "  + currentHumidity + "%";
+                windEl.innerHTML = "Wind: "  + currentWind + "mph";
                 uviEl.innerHTML ="UV Index: "  +  currentUVI;
 
                 
@@ -79,7 +67,7 @@ var getForecast = function(lat, lon) {
                 cityContainerEl.append(humidityEl);
                 cityContainerEl.append(windEl);
                 cityContainerEl.append(uviEl);
-                //var currentIcon = document.createElement
+             
                 // console.log(currentUVI)
 
                 //5 Day Forecast
@@ -91,6 +79,7 @@ var getForecast = function(lat, lon) {
                     var dailyHumidity = data.daily[i].humidity;
                     var dailyWind  = data.daily[i].wind_speed;
                     var dailyUVI = data.daily[i].uvi;
+                    console.log(i);
 
                     var dailyContainer = document.createElement("div");
                     var dateDaily = document.createElement("h3");
@@ -104,16 +93,26 @@ var getForecast = function(lat, lon) {
                     dailyIcon.setAttribute("src","http://openweathermap.org/img/wn/" + dailyImg + ".png");
                     dailyIcon.setAttribute('alt', "weather icon");
                     tempDaily.innerHTML = "Temp: " + dailyTemp + "\u00B0F";
+                    windDaily.innerHTML = "Wind Speed: " + dailyWind + "mph";
+                    humidityDaily.innerHTML = "Humidity: " + dailyHumidity + "%";
 
-                }
+                    dailyContainer.append(dailyDate);
+                    dateDaily.append(dailyIcon);
+                    dailyContainer.append(tempDaily);
+                    dailyContainer.append(windDaily);
+                    dailyContainer.append(humidityDaily);
+               }
+
 
             })
+            getForecast.innerHTML = "";
+            forecastEl.innerHTML = "";
         } else{
             alert("Error" + response.statusText)
         }
     })
 };
-
+// get city and display forecasted information 
 
 var displayCity = function(cityName) {
     var apiUrl2 = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=imperial&appid=" + apiKey;
@@ -141,4 +140,27 @@ var searchedCity = function(event) {
     console.log(city)
     displayCity(city)
 }
+// save recent searched cities
+var saveCity = (city) => {
+    var saveSearchContainer = document.createElement("div")
+    var savedCity = document.createElement("button");
+    savedCity.innerHTML = city;
+    saveSearchContainer.append(savedCity);
+    historyEl.append(saveSearchContainer);
+    
+    var location = localStorage.getItem("location");
+
+    if (location === "null") {
+        var saveCityObj = JSON.stringify([{city: city}])
+        var location = localStorage.setItem("location", saveCityObj)
+    } else {
+        var location = JSON.parse(location);
+        location.push([])
+    }
+
+}
+
+
+
+//event listeners 
 searchBtnEl.addEventListener('click', searchedCity);

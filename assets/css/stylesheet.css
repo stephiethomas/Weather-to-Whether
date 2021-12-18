@@ -1,44 +1,16 @@
-/* :root {
-    --primary: linear-gradient(to right, #0000ff 0%, #000066 90%);
-    --secondary: whitesmoke;
-    --tertiary: aliceblue;
-    --light-dark: #4682b4;
-    --dark: #191970;
-    --border-radius: .3rem;
-} */
-* {
-    box-sizing: border-box;
-}
-
-/* body {
-    margin: 20px auto;
-    width: 75%;
-    padding: 0;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    line-height: 1.5;
-    font-size: 18px;
-}
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: 700;
-  margin: 0;
-  line-height: 1.25;
-  color: var(--dark);
-} */
-#header, #searchBtn, header h1 {
+header, 
+.searchBtn,
+header h1 {
     background-image: linear-gradient(to right, #0000ff 0%, #000066 90%);
     color: whitesmoke;
 }
 
-#searchArea, #fiveDay{
+.forecast{
     margin: 15px;
 }
 
 
- /* .searchBtn {
+.searchBtn {
     font-size: 1.3rem;
     text-decoration:none;
     padding: 6px 5px;
@@ -50,29 +22,28 @@ h6 {
     background-color: var(--light-dark);
     box-shadow: 3px 3px var(--dark);
     transform: translate(-1px, -1px);  
-} */ */
+} 
 .searchBtn:hover {
     color: greenyellow;
 }
 .searchBtn {
     display: inline;
 }
-/* .city {
-    padding: 0;
 
-}
-#recentSrch {
-    margin: 20px;
-}
-
-.card {
-    margin: 0 0 20px 0;
-    border: 3px solid var(--dark);
-    border-radius: var(--border-radius);
-}
- .card-header {
-    color: var(--tertiary);
-    background-color: var(--dark);
-    padding: 2.5%;
-    border-radius: calc(.18rem - 1px) calc(.18rem - 1px) 0 0;
-} */
+@media screen and (max-width: 1000px) { 
+    .ajax-section .cities {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+   
+  @media screen and (max-width: 700px) {
+    .ajax-section .cities {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+   
+  @media screen and (max-width: 500px) {  
+    .ajax-section .cities {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
