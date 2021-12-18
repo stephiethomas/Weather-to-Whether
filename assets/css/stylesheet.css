@@ -1,16 +1,16 @@
-:root {
+/* :root {
     --primary: linear-gradient(to right, #0000ff 0%, #000066 90%);
     --secondary: whitesmoke;
     --tertiary: aliceblue;
     --light-dark: #4682b4;
     --dark: #191970;
     --border-radius: .3rem;
-}
+} */
 * {
     box-sizing: border-box;
 }
 
-body {
+/* body {
     margin: 20px auto;
     width: 75%;
     padding: 0;
@@ -27,14 +27,18 @@ h6 {
   margin: 0;
   line-height: 1.25;
   color: var(--dark);
+} */
+#header, #searchBtn, header h1 {
+    background-image: linear-gradient(to right, #0000ff 0%, #000066 90%);
+    color: whitesmoke;
 }
 
-header {
-    background: linear-gradient(to right, #0000ff 0%, #000066 90%);
-    text-align: center;
-    color: var(--secondary);
+#searchArea, #fiveDay{
+    margin: 15px;
 }
- .searchBtn {
+
+
+ /* .searchBtn {
     font-size: 1.3rem;
     text-decoration:none;
     padding: 6px 5px;
@@ -46,14 +50,14 @@ header {
     background-color: var(--light-dark);
     box-shadow: 3px 3px var(--dark);
     transform: translate(-1px, -1px);  
-} */
+} */ */
 .searchBtn:hover {
     color: greenyellow;
 }
 .searchBtn {
     display: inline;
 }
-.city {
+/* .city {
     padding: 0;
 
 }
@@ -71,4 +75,4 @@ header {
     background-color: var(--dark);
     padding: 2.5%;
     border-radius: calc(.18rem - 1px) calc(.18rem - 1px) 0 0;
-}
+} */
