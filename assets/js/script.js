@@ -10,10 +10,11 @@ var cityContainerEl = document.querySelector("#city-container");
 //api key
 var apiKey = "a6f4e97706bc320bc77d0f64e4111a15"
 //Current weather api- need to change
-var apiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=29.7604&lon=-95.3698&exclude=minutely,hourly,alerts&units=imperial&appid=" + apiKey
+// var apiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=minutely,hourly,alerts&units=imperial&appid=" + apiKey;
+    
 
 //5 Day api
-var apiUrl2 = "https://api.openweathermap.org/data/2.5/weather?q=Dallas&appid=" + apiKey
+var apiUrl2 = "https://api.openweathermap.org/data/2.5/weather?q=&appid=" + apiKey
 
 //prevent page from refreshing
 var formSubmitHandler = function(event) {
@@ -33,10 +34,11 @@ if (city) {
 
 
 //get forecast from api- put api inside this function
-var getForecast = function() {
+var getForecast = function(lat, lon) {
     //input city, lat & lon parameters
-    fetch(apiUrl)
-    .then(function(response){
+    var apiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=minutely,hourly,alerts&units=imperial&appid=" + apiKey;
+    fetch(apiUrl) 
+    .then(response => {
         if(response.ok){
             response.json()
             .then(function(data){
@@ -69,10 +71,15 @@ var getForecast = function() {
                 var uviEl = document.createElement("h4")
                 uviEl.innerHTML=currentUVI
 
+                
                 cityContainerEl.append(dateEl);
                 cityContainerEl.append(iconEl);
+                cityContainerEl.append(tempEl);
+                cityContainerEl.append(humidityEl);
+                cityContainerEl.append(windEl);
+                cityContainerEl.append(uviEl);
                 //var currentIcon = document.createElement
-                console.log(humidityEl)
+                console.log(currentUVI)
             })
         } else{
             alert("Error" + response.statusText)
@@ -81,15 +88,25 @@ var getForecast = function() {
 };
 getForecast();
 
-//display  current city data
-var displayCity = function(data) {
-var cityContainerEl = document.createElement("p");    
+var displayCity = function(cityName) {
+    var apiUrl2 = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=imperial&appid=" + apiKey;
+    fetch(apiUrl2)
+    .then(response => {
+        if(response.ok){
+            response.json()
+            .then(function(data) {
+                city.innerHTML = cityName
+                getForecast(data.coord.lat, data.coord.lon)
+            })
+        }
+        })
+};
+displayCity();
 
-// displayCity.innerHtml =    
-var temp = document.createElement ("p");
-temp.innerHTML=data.current.temp;
-cityContainerEl.appendChild(temp);
 
-
+var searchedCity = function(event) {
+    event.preventDefault();
+    var city = cityInputEl.value.trim();
+    getCity(city)
 }
-
+searchBtnEl.addEventListener('click', searchedCity);
