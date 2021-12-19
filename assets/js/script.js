@@ -4,6 +4,7 @@ var cityInputEl = document.querySelector("#search-form");
 var recentSearch = document.querySelector(".cities");
 var forecastEl = document.querySelector("#forecast");
 var cityContainerEl = document.querySelector("#city-container");
+var historyEl = document.querySelector("#savedSearchContainer");
 
 //api key
 var apiKey = "a6f4e97706bc320bc77d0f64e4111a15"
@@ -73,7 +74,7 @@ var getForecast = function(lat, lon) {
                 //5 Day Forecast
 
                 for (let i = 0; i < 5; i++) {
-                    var dailyDate = new Date(data.daily[i].dt * 1000).toLocaleDateString
+                    var dailyDate = new Date(data.daily[i].dt * 1000).toLocaleDateString();
                     var dailyImg = data.daily[i].weather[0].icon;
                     var dailyTemp = data.daily[i].temp.day;
                     var dailyHumidity = data.daily[i].humidity;
@@ -89,7 +90,7 @@ var getForecast = function(lat, lon) {
                     var humidityDaily = document.createElement("p");
 
                     dailyContainer.className = "container"
-                    dateDaily.innerHTML = '(' + dailyDate.toLocaleDateString() +')';
+                    dateDaily.innerHTML = (dailyDate);
                     dailyIcon.setAttribute("src","http://openweathermap.org/img/wn/" + dailyImg + ".png");
                     dailyIcon.setAttribute('alt', "weather icon");
                     tempDaily.innerHTML = "Temp: " + dailyTemp + "\u00B0F";
@@ -102,7 +103,7 @@ var getForecast = function(lat, lon) {
                     dailyContainer.append(windDaily);
                     dailyContainer.append(humidityDaily);
                     forecastEl.append(dailyContainer);
-                    console.log(dailyContainer);
+                    // console.log(dailyContainer);
                }
 
 
@@ -146,7 +147,7 @@ var searchedCity = function(event) {
 var saveCity = (city) => {
     var saveSearchContainer = document.createElement("div")
     var savedCity = document.createElement("button");
-    savedCity.innerHTML = city;
+    savedCity.innerHTML = cities;
     saveSearchContainer.append(savedCity);
     historyEl.append(saveSearchContainer);
     
