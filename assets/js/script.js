@@ -98,7 +98,7 @@ var getForecast = function(lat, lon) {
                     humidityDaily.innerHTML = "Humidity: " + dailyHumidity + "%";
 
                     dailyContainer.append(dailyDate);
-                    dateDaily.append(dailyIcon);
+                    dateDaily.append(dailyImg);
                     dailyContainer.append(tempDaily);
                     dailyContainer.append(windDaily);
                     dailyContainer.append(humidityDaily);
